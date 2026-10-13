@@ -1,0 +1,9 @@
+{
+  "name": "com.ytbrave.host",
+  "description": "YT-to-Brave native helper — launches external browsers for the Chrome extension.",
+  "path": "host.bat",
+  "type": "stdio",
+  "allowed_origins": [
+    "chrome-extension://__EXTENSION_ID__/"
+  ]
+}

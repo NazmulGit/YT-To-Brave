@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>YT-to-Brave PiP</title>
+  <link rel="stylesheet" href="pip.css" />
+</head>
+<body>
+  <div class="player" id="player">
+    <iframe
+      id="ytFrame"
+      allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+      allowfullscreen
+      frameborder="0"
+      title="YouTube player"
+    ></iframe>
+
+    <div class="overlay" id="overlay">
+      <div class="topbar">
+        <div class="title-bar">
+          <span class="dot-pulse"></span>
+          <span class="vid-title" id="vidTitle">YouTube · PiP</span>
+        </div>
+        <div class="topbar-right">
+          <button class="ic-btn" id="alwaysOnTop" title="Always on top">📌</button>
+          <button class="ic-btn" id="popoutBtn" title="Open in Brave">🦁</button>
+          <button class="ic-btn" id="closeBtn" title="Close">✕</button>
+        </div>
+      </div>
+
+      <div class="middle">
+        <button class="ic-btn-lg" id="bigSkipBack" title="Skip back (J)">⏮</button>
+        <button class="ic-btn-lg" id="skipBack" title="Skip back (←)">↺</button>
+        <button class="play-btn" id="playPauseBtn" title="Play/Pause (Space)">
+          <svg id="playIcon" viewBox="0 0 24 24" width="32" height="32" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          <svg id="pauseIcon" viewBox="0 0 24 24" width="32" height="32" fill="currentColor" hidden><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+        </button>
+        <button class="ic-btn-lg" id="skipFwd" title="Skip forward (→)">↻</button>
+        <button class="ic-btn-lg" id="bigSkipFwd" title="Skip forward (L)">⏭</button>
+      </div>
+
+      <div class="bottombar">
+        <div class="time"><span id="curTime">0:00</span> / <span id="durTime">0:00</span></div>
+        <div class="progress" id="progress">
+          <div class="progress-bg"></div>
+          <div class="progress-fill" id="progressFill"></div>
+          <div class="progress-buf" id="progressBuf"></div>
+          <div class="progress-thumb" id="progressThumb"></div>
+        </div>
+        <div class="controls">
+          <button class="ic-btn" id="muteBtn" title="Mute (M)">🔊</button>
+          <input type="range" id="volume" min="0" max="100" value="100" />
+          <select id="speedSelect" class="select-mini" title="Speed (&lt; / &gt;)">
+            <option value="0.25">0.25×</option>
+            <option value="0.5">0.5×</option>
+            <option value="0.75">0.75×</option>
+            <option value="1" selected>1×</option>
+            <option value="1.25">1.25×</option>
+            <option value="1.5">1.5×</option>
+            <option value="1.75">1.75×</option>
+            <option value="2">2×</option>
+          </select>
+          <button class="ic-btn" id="captionsBtn" title="Captions (C)">CC</button>
+          <button class="ic-btn" id="theaterBtn" title="Theater">🖼</button>
+          <button class="ic-btn" id="fullscreenBtn" title="Fullscreen (F)">⛶</button>
+        </div>
+      </div>
+
+      <div class="toast" id="toast" hidden></div>
+    </div>
+  </div>
+
+  <script src="pip.js"></script>
+</body>
+</html>

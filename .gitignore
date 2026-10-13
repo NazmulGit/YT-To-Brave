@@ -1,0 +1,23 @@
+native-host/com.ytbrave.host.installed.json
+*.log
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+__pycache__/
+*.pyc
+node_modules/
+
+# --- GitHub rollout (2026-10-13) ---
+releases/
+*.zip
+*.log
+*.log.*
+*.bak
+*.bak-*
+*.bak_*
+.env
+.env.*
+node_modules/
+__pycache__/
+

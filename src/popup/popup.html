@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>YT-to-Brave</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <header class="hdr">
+    <div class="brand">
+      <img src="../../icons/icon48.png" alt="" class="logo" />
+      <div class="brand-text">
+        <div class="title">YT-to-Brave</div>
+        <div class="subtitle" id="subtitle">YouTube → Brave redirector</div>
+      </div>
+    </div>
+    <label class="switch" title="Enable / disable redirect">
+      <input type="checkbox" id="enabledToggle" />
+      <span class="slider"></span>
+    </label>
+  </header>
+
+  <section class="card current-tab">
+    <div class="card-label">Current tab</div>
+    <div class="url" id="currentUrl">—</div>
+    <div class="row btns">
+      <button class="btn primary" id="openInBraveBtn">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M14 3l3 3-7 7v4h4l7-7 3 3-1.5 1.5L21 16l-9 9H3v-9z"/></svg>
+        Open in <span id="targetBrowserLabel">Brave</span>
+      </button>
+      <button class="btn ghost" id="pipBtn" title="Picture-in-Picture">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><rect x="11" y="11" width="8" height="6" rx="1" fill="currentColor"/></svg>
+        PiP
+      </button>
+    </div>
+  </section>
+
+  <section class="card mode">
+    <div class="card-label">Open mode</div>
+    <div class="seg" id="modeSeg" role="tablist">
+      <button data-mode="new-tab" class="seg-btn active">New tab</button>
+      <button data-mode="new-window" class="seg-btn">Window</button>
+      <button data-mode="private-window" class="seg-btn">Private</button>
+      <button data-mode="pip" class="seg-btn">PiP</button>
+      <button data-mode="ask" class="seg-btn">Ask</button>
+    </div>
+  </section>
+
+  <section class="card browser">
+    <div class="card-label">Target browser</div>
+    <select id="browserSelect" class="select">
+      <option value="brave">🦁  Brave</option>
+      <option value="firefox">🦊  Firefox</option>
+      <option value="edge">🌐  Edge</option>
+      <option value="chrome">🟢  Chrome</option>
+      <option value="opera">🅾️  Opera</option>
+      <option value="vivaldi">🟥  Vivaldi</option>
+      <option value="custom">⚙️  Custom path…</option>
+    </select>
+  </section>
+
+
+  <section class="card stats">
+    <div class="stat">
+      <div class="stat-num" id="statRedirected">0</div>
+      <div class="stat-label">Redirected</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num" id="statPip">0</div>
+      <div class="stat-label">PiP opens</div>
+    </div>
+    <div class="stat">
+      <div class="stat-dot" id="hostDot"></div>
+      <div class="stat-label" id="hostLabel">Host…</div>
+    </div>
+  </section>
+
+  <footer class="ftr">
+    <button class="link" id="optionsBtn">⚙️ Settings</button>
+    <button class="link" id="testHostBtn">Test connection</button>
+  </footer>
+
+  <div class="toast" id="toast" hidden></div>
+
+  <script type="module" src="popup.js"></script>
+</body>
+</html>

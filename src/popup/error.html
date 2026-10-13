@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Couldn't open external browser</title>
+<style>
+  body { margin:0; background:#0f0f0f; color:#f5f5f5; font-family:-apple-system,Segoe UI,Roboto,sans-serif; display:grid; place-items:center; min-height:100vh; padding:20px; }
+  .card { background:#1a1a1a; border:1px solid #2a2a2a; border-radius:18px; padding:32px; max-width:560px; width:100%; box-shadow:0 12px 40px rgba(0,0,0,.5); }
+  .icon { font-size:48px; text-align:center; margin-bottom:14px; }
+  h1 { margin:0 0 8px; font-size:18px; text-align:center; }
+  p { margin:0 0 14px; color:#9aa0a6; font-size:13px; line-height:1.55; }
+  .url { font-family:monospace; font-size:11px; background:#0c0c0c; padding:10px; border-radius:8px; word-break:break-all; border:1px solid #2a2a2a; margin-bottom:18px; }
+  .btns { display:flex; gap:8px; flex-wrap:wrap; justify-content:center; }
+  button, a.btn { padding:10px 14px; border-radius:10px; border:1px solid #2a2a2a; background:#232323; color:#fff; font-weight:600; cursor:pointer; font-size:12px; text-decoration:none; display:inline-block; }
+  button.primary { background:linear-gradient(135deg,#ff3d00,#ff0000); border-color:transparent; }
+  ol { font-size:12px; color:#bbb; padding-left:18px; }
+  ol code { background:#0c0c0c; padding:2px 5px; border-radius:4px; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="icon">⚠️</div>
+    <h1>Couldn't reach the native host</h1>
+    <p>The extension talks to a tiny helper script on your computer to launch the external browser. It looks like that helper isn't installed or registered yet.</p>
+    <div class="url" id="url"></div>
+    <p>To fix it:</p>
+    <ol>
+      <li>Open the <code>native-host</code> folder in this extension's directory</li>
+      <li>Right-click <code>install.bat</code> → <b>Run as administrator</b></li>
+      <li>Reload the extension at <code>chrome://extensions</code></li>
+      <li>Try again</li>
+    </ol>
+    <div class="btns">
+      <button class="primary" id="retry">Retry</button>
+      <button id="stay">Stay in Chrome</button>
+      <a class="btn" id="settings" href="#">Open settings</a>
+    </div>
+  </div>
+<script type="module">
+  const url = new URLSearchParams(location.search).get("url") || "";
+  document.getElementById("url").textContent = url;
+  document.getElementById("retry").onclick = async () => {
+    const r = await chrome.runtime.sendMessage({ type: "OPEN_IN_BROWSER", url });
+    if (r?.ok) window.close();
+  };
+  document.getElementById("stay").onclick = () => { location.replace(url); };
+  document.getElementById("settings").onclick = (e) => {
+    e.preventDefault();
+    chrome.runtime.openOptionsPage();
+  };
+</script>
+</body>
+</html>
