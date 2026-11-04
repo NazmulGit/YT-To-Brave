@@ -166,7 +166,7 @@ Plus on-screen: progress bar, time display, volume slider, speed dropdown (0.25Ã
 
 ## License
 
-MIT â€” do whatever you want with it.
+MIT. See [LICENSE](LICENSE).
 
 ---
 
