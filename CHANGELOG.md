@@ -14,7 +14,7 @@
 - **Stop:** Disable the extension at `chrome://extensions`; run `native-host\uninstall.bat` to remove the native host registry entry
 - **Port / URL:** N/A (local Chrome extension, no server)
 - **Config:** Extension settings stored in Chrome sync storage; native host path in `HKCU\SOFTWARE\Google\Chrome\NativeMessagingHosts\com.ytbrave.host`
-- **Update:** `git pull` in `D:\Code\yt-to-brave-only`, then reload the extension at `chrome://extensions`; re-run `native-host\install.bat` only if `host.py` or `host.bat` changed
+- **Update:** `git pull` in `<your-clone-folder>`, then reload the extension at `chrome://extensions`; re-run `native-host\install.bat` only if `host.py` or `host.bat` changed
 
 ---
 
@@ -22,8 +22,8 @@
 
 ### v1.0.0 — Initial Release — 2026-06-12
 **What changed:** First complete working release. Ships the Manifest V3 Chrome extension (background service worker, content script link-detector, 7-tab options page, toolbar popup, PiP player) together with the native host (`host.py` / `host.bat`) and a smart two-mode installer (`install.bat` / `install.py`). Auto mode scans Chrome/Brave/Edge/Vivaldi/Opera profile directories to find the extension ID without user input; manual mode accepts one or more 32-character IDs pasted at the prompt. Registry write targets `HKCU` so no admin elevation is needed. Supports opening YouTube in any of six preset browsers or a custom `.exe`, with optional timestamp (`?t=`) preservation. PiP window persists across tab navigation with on-screen controls and full keyboard bindings.
-**Redo (re-apply):** `git clone <repo> D:\Code\yt-to-brave-only` → open `chrome://extensions`, enable Developer mode, click Load unpacked, select `D:\Code\yt-to-brave-only` → double-click `native-host\install.bat`, press Enter (Auto), reload extension card.
-**Undo (roll back):** `native-host\uninstall.bat` (removes registry keys) → remove extension at `chrome://extensions` → `rmdir /s /q D:\Code\yt-to-brave-only`.
+**Redo (re-apply):** `git clone <repo> <your-clone-folder>` → open `chrome://extensions`, enable Developer mode, click Load unpacked, select `<your-clone-folder>` → double-click `native-host\install.bat`, press Enter (Auto), reload extension card.
+**Undo (roll back):** `native-host\uninstall.bat` (removes registry keys) → remove extension at `chrome://extensions` → `rmdir /s /q <your-clone-folder>`.
 **System:** Chrome extension (no port); native host registered at `HKCU\SOFTWARE\Google\Chrome\NativeMessagingHosts\com.ytbrave.host`; Python 3.8+ required on PATH.
 
 ---
